@@ -5,14 +5,15 @@ const T = 300.0
 const ep_0 = 8.854187817e-12
 const ep_r_Si = 11.7
 const n = 1000
-const dx = 1e-8
+const dx = 1e-12
 const dt = 1e-12
 const mu_n = 0.135
 const mu_p = 0.045
-const N_A_ptype = 1e18
-const N_D_ntype = 1e18
+const N_A_ptype = 1e17
+const N_D_ntype = 1e17
 const n_i=1.1e16
-
+const C_Rr=1.1e-8
+const Gr=1e21
 mutable struct State
     v::Vector{Float64}
     n::Vector{Float64}
