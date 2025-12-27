@@ -1,1 +1,1 @@
-isme thoda wo kuch karunga
+isme thoda wo kuch karunga(heccing)

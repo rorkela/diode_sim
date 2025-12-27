@@ -1,22 +1,5 @@
 norm(v) = v/(k_B*T/q)
 B(z) = (z==0.0) ? (1.0) : (z/(exp(z)-1.0))
-function current_den_n(s::State,v::Vector{Float64},dx::Float64)
-    c=k_B*T*mu_n/q
-    Jn=Vector{Float64}(undef, n-1)
-    for i = 1:n-1
-            Jn[i]=c*(s.n[i+1]*B(v[i+1]-v[i])-s.n[i]*B(v[i]-v[i+1]))
-    end
-    return Jn
-end
-
-function current_den_p(s::State,v::Vector{Float64},dx::Float64)
-    c=k_B*T*mu_p/q
-    Jp=Vector{Float64}(undef, n-1)
-    for i = 1:n-1
-            Jp[i]=-(k_B*T*mu_p/q)*(s.p[i+1]*B(-v[i+1]+v[i])-s.p[i]*B(-v[i]+v[i+1]))
-    end
-    return Jp
-end
 
 function jacobi_n(s,sprev,vnorm,vprevnorm,params::Parameters)
     mu=mu_n
