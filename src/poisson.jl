@@ -1,14 +1,14 @@
 
-function poisson!(s::State, bound1::Float64, boundn::Float64,params::Parameters)
+function poisson!(params::Parameters,s::State, bound1::Float64, boundn::Float64)
     dx=params.dx
     dt=params.dt
-    jl=Vector{Float64}(undef, n)
-    jm=Vector{Float64}(undef, n)
-    ju=Vector{Float64}(undef, n)
-    R=Vector{Float64}(undef, n)
+    jl=Vector{Float64}(undef, params.n)
+    jm=Vector{Float64}(undef, params.n)
+    ju=Vector{Float64}(undef, params.n)
+    R=Vector{Float64}(undef, params.n)
     for iter = 1:10
-        for i = 1:n
-            if i==1 || i==n
+        for i = 1:params.n
+            if i==1 || i==params.n
                 jl[i]=0.0
                 jm[i]=1.0
                 ju[i]=0.0
@@ -29,7 +29,7 @@ function poisson!(s::State, bound1::Float64, boundn::Float64,params::Parameters)
                     )*s.v[i+1]-(
                         2.0*permittivity(i)+permittivity(i+1)+permittivity(i-1)
                     )*s.v[i]
-                    )+charge_den(s,i)
+                    )+charge_den(params,s,i)
             end
         end
         R=-1.0 .* R
