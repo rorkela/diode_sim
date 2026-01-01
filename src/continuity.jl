@@ -1,5 +1,5 @@
 norm(v) = v/(k_B*T/q)
-B(z) = (z==0.0) ? (1.0) : (z/(exp(z)-1.0))
+B(z) = (-1e-10<z<1e-10) ? exp(-z) : (z/(exp(z)-1.0))
 
 function jacobi_n(params::Parameters,s::State,sprev::State,vnorm::Vector{Float64},vprevnorm::Vector{Float64})
     mu=mu_n
